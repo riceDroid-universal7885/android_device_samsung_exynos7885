@@ -41,7 +41,7 @@ bool DevfreqStateResidencyDataProvider::extractNum(const char *str, char **str_e
 
 std::vector<std::pair<int64_t, int64_t>> DevfreqStateResidencyDataProvider::parseTimeInState() {
     // Using FILE* instead of std::ifstream for performance reasons
-    std::unique_ptr<FILE, decltype(&fclose)> fp(fopen(mPath.c_str(), "r"), fclose);
+    std::unique_ptr<FILE, decltype(&fclose)> fp(fopen(mPath.c_str(), "re"), fclose);
     if (!fp) {
         PLOG(ERROR) << "Failed to open file " << mPath;
         return {};
